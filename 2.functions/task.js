@@ -4,7 +4,7 @@ function getArrayParams(arr) {
   min = arr[0];
   max = arr[0];
   sum = 0;
-  for (i = 0; i < arr.length; i += 1) {
+  for (let i = 0; i < arr.length; i += 1) {
     if (arr[i] < min) {
       min = arr[i];
     }
@@ -20,7 +20,7 @@ function getArrayParams(arr) {
 // Задание 2
 function worker(arr) {
   let sum = 0;
-  for (i = 0; i < arr.length; i += 1) {
+  for (let i = 0; i < arr.length; i += 1) {
     sum = sum + arr[i];
   }
   return sum;
@@ -28,7 +28,7 @@ function worker(arr) {
 
 function makeWork(arrOfArr, func) {
   let max = -Infinity;
-  for (i = 0; i < arrOfArr.length; i += 1) {
+  for (let i = 0; i < arrOfArr.length; i += 1) {
     let arrResultElement = func(arrOfArr[i]);
     if (arrResultElement > max) max = arrResultElement;
   }
@@ -39,7 +39,7 @@ function makeWork(arrOfArr, func) {
 function worker2(arr) {
   let min = arr[0];
   let max = arr[0];
-  for (i = 0; i < arr.length; i += 1) {
+  for (for i = 0; i < arr.length; i += 1) {
     if (arr[i] < min) min = arr[i];
     if (arr[i] > max) max = arr[i];
   }
