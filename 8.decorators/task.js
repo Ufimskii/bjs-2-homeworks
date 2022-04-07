@@ -30,12 +30,10 @@ function debounceDecoratorNew(func, ms) {
   return function (...args) {
     savedArgs = args;
     savedThis = this;
-    if (flag) {
-      return;
+    if (!flag) {
+      func.apply(this, savedArgs);
+      flag = true;
     }
-
-    func.apply(this, savedArgs);
-    flag = true;
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       flag = false;
@@ -48,26 +46,26 @@ function debounceDecorator2(func, ms) {
   let timeout;
   let flag = false,
     savedArgs,
-    savedThis,
-    count;
+    savedThis;
 
   return function (...args) {
-    if (count === undefined) count = 0;
+    if (wrapper.count === undefined) wrapper.count = 0;
     savedArgs = args;
     savedThis = this;
-    if (flag) {
-      return;
+    if (!flag) {
+      //return;
+      //}
+
+      func.apply(this, savedArgs);
+      flag = true;
     }
-
-    func.apply(this, savedArgs);
-    flag = true;
-    count += 1;
-
+    
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       flag = false;
       func.apply(savedThis, savedArgs);
-      count += 1;
+      wrapper.count += 1;
     }, ms);
   }
+  return wrapper;
 }
