@@ -48,14 +48,12 @@ function debounceDecorator2(func, ms) {
     savedArgs,
     savedThis;
 
-  return function (...args) {
+  function wrapper (...args) {
     if (wrapper.count === undefined) wrapper.count = 0;
     savedArgs = args;
     savedThis = this;
     if (!flag) {
-      //return;
-      //}
-
+     
       func.apply(this, savedArgs);
       flag = true;
     }
